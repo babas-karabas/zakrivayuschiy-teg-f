@@ -33,8 +33,11 @@ a {
 button,
 input {
   color: currentColor;
-  font-family: inherit;
+  font-family: var(--accent-font);
   font-size: inherit;
+  background-color: transparent;
+  border: 2px solid var(--base-color);
+
 }
 
 ul,

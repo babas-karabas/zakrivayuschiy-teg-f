@@ -13,4 +13,326 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--base-font), sans-serif;
+  font-variation-settings: "wght" var(--font-weight-regular);
+  display: grid;
+  place-items: center;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: repeating-linear-gradient(
+      to right,
+      #d3d3d3 0,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #d3d3d3 0,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  scroll-behavior: smooth;
+  background-color: var(--contrast-color);
+}
+
+.width {
+  inline-size: min(100%, 696px);
+}
+
+header {
+  background-color: var(--contrast-color);
+  color: var(--base-color);
+  border: 2px solid var(--base-color);
+  margin-block: 100px;
+  padding-block: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
+}
+
+.header__title {
+  font-family: var(--accent-font);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-align: center;
+}
+
+.header__small-title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+  margin-block-start: 20px;
+}
+
+.header__title span {
+  display: block;
+}
+
+.card {
+  border: 2px solid var(--base-color);
+  background-color: var(--contrast-color);
+}
+
+.card + .card {
+  margin-block-start: 50px;
+}
+
+.card__title {
+  font-variation-settings: "wght" var(--font-weight-bold);
+  padding: 5px 10px;
+  font-size: 18px;
+  line-height: 1.21;
+}
+
+.card__picture-wrapper {
+  position: relative;
+  overflow: hidden; /* убираем размытие границ при использовании блюра */
+  border-block: 2px solid var(--base-color);
+}
+
+.card__picture {
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.card:nth-of-type(1) .card__picture {
+  scale: 1.06; /* убираем размытие границ при использовании блюра */
+  filter: blur(4px);
+}
+
+.card:nth-of-type(2) .card__picture {
+  filter: hue-rotate(0.7turn) saturate(350%);
+}
+
+.card:nth-of-type(3) .card__picture {
+  filter: sepia(80%) saturate(1000%);
+}
+
+.card:nth-of-type(4) .card__picture {
+  filter: contrast(170%) grayscale(1);
+}
+
+.card:nth-of-type(5) .card__picture {
+  filter: brightness(200%) hue-rotate(0.5turn);
+}
+
+.card:nth-of-type(6) .card__picture {
+  filter: saturate(250%) hue-rotate(0.15turn);
+}
+
+.card:nth-of-type(7) .card__picture {
+  filter: saturate(250%) hue-rotate(0.2turn);
+}
+
+.card:nth-of-type(8) .card__picture {
+  filter: contrast(160%);
+}
+
+.card__label {
+  position: absolute;
+  color: var(--base-color);
+  right: clamp(0.6875rem, 0.3794rem + 1.3146vw, 1.5625rem);
+  top: 25px;
+  z-index: 2;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  mix-blend-mode: hard-light;
+  opacity: 50%;
+  text-shadow: 1px 1px var(--contrast-color), -1px -1px var(--contrast-color);
+}
+@supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--contrast-color);
+    text-stroke: 1px var(--contrast-color);
+    text-shadow: none;
+  }
+}
+
+.card__text-wrapper {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  line-height: 1.17;
+  font-size: 18px;
+}
+
+.card__button-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  cursor: pointer;
+  position: relative;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:not(.card__icon-button):focus-visible {
+  box-shadow: 2px 2px 0 var(--base-color);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* стилизация сердечка */
+
+.card__icon-button {
+  border: 2px solid transparent;
+  inline-size: 40px;
+  block-size: 39px;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--base-color);
+  transition: border 0.3s ease;
+}
+
+.like-icon:hover .core {
+  fill: var(--base-color);
+  transition: fill 0.3s;
+}
+
+.core {
+  fill: none;
+  transition: fill 0.3s 0.03s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--base-color);
+  transition: fill 0.3s 0.05s;
+}
+
+.main-body {
+  fill: none;
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon:active .core {
+  fill: red;
+  transition: fill 0.3s;
+}
+
+.like-icon:active .main-body {
+  fill: red;
+  transition: fill 0.3s 0.05s;
+}
+
+/* стилизация кнопки Like */
+
+.card__like-button {
+  inline-size: 130px;
+  block-size: 39px;
+  overflow: hidden;
+}
+
+.button__text {
+  margin: auto;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  font-family: var(--accent-font);
+  mix-blend-mode: difference;
+  color: var(--contrast-color);
+}
+
+/* стилизация кнопки, которая открывает модальное окно */
+
+.save-button {
+  min-inline-size: 306px;
+  margin-block: 50px 100px;
+  padding: 17px 21px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background-color: var(--contrast-color);
+  color: var(--contrast-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.save-button__icon {
+  inline-size: 28px;
+  block-size: 28px;
+  position: relative;
+  z-index: 2;
+  fill: var(--contrast-color);
+  mix-blend-mode: difference;
+  @media (width >= 768px) {
+    inline-size: 21px;
+    block-size: 21px;
+  }
+}
+
+/* ховер-заливка кнопки Like и кнопки, которая открывает модальное окно */
+
+.card__like-button:after,
+.save-button::after {
+  inline-size: 100%;
+  block-size: 100%;
+  inset: 0;
+  background-color: var(--base-color);
+  position: absolute;
+  content: '';
+  transition: translate 0.5s ease-in-out;
+  translate: -100%;
+  z-index: 1;
+}
+
+.card__like-button:hover::after,
+.save-button:hover::after {
+  translate: 0%;
+}
+
+/* стилизация модального окна */
+
+.save-dialog {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: auto min-content;
+  position: fixed;
+  inset: 0;
+  transition: opacity 0.3s ease-in-out;
+  border: 2px solid var(--base-color);
+  padding: 30px;
+  row-gap: 30px;
+  column-gap: 20px;
+  min-inline-size: 341px;
+  max-inline-size: 357px;
+  justify-content: start;
+  align-items: center;
+}
+
+.save-dialog:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.save-dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.save-dialog__icon {
+  inline-size: 39px;
+  block-size: 36px;
+}
+
+.save-dialog__text {
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.save-dialog__close-button {
+  border: 2px solid var(--base-color);
+  padding: 17px;
+  inline-size: 100%;
+  grid-column: 1 / 3;
 }
