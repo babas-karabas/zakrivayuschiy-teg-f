@@ -164,10 +164,19 @@ header {
 button {
   cursor: pointer;
   position: relative;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s linear;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  color: var(--contrast-color);
+
+}
+
+.button__text {
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
 }
 
 button:focus {
@@ -176,6 +185,24 @@ button:focus {
 
 button:not(.card__icon-button):focus-visible {
   box-shadow: 2px 2px 0 var(--base-color);
+}
+
+/* ховер-заливка */
+
+button:not(.card__icon-button)::after {
+  inline-size: 100%;
+  block-size: 100%;
+  inset: 0;
+  background-color: var(--base-color);
+  position: absolute;
+  content: '';
+  transition: translate 0.5s ease-in-out;
+  translate: -100%;
+  z-index: 1;
+}
+
+button:not(.card__icon-button):hover::after {
+  translate: 0%;
 }
 
 /* стилизация сердечка */
@@ -232,15 +259,6 @@ button:not(.card__icon-button):focus-visible {
 .card__like-button {
   inline-size: 130px;
   block-size: 39px;
-  overflow: hidden;
-}
-
-.button__text {
-  margin: auto;
-  position: relative;
-  z-index: 2;
-  mix-blend-mode: difference;
-  color: var(--contrast-color);
 }
 
 /* стилизация кнопки, которая открывает модальное окно */
@@ -251,9 +269,6 @@ button:not(.card__icon-button):focus-visible {
   margin-inline: auto;
   padding: 17px 21px;
   gap: 8px;
-  color: var(--contrast-color);
-  position: relative;
-  overflow: hidden;
   flex-direction: column;
   @media (width >= 768px) {
     flex-direction: row;
@@ -265,32 +280,11 @@ button:not(.card__icon-button):focus-visible {
   block-size: 28px;
   position: relative;
   z-index: 2;
-  fill: var(--contrast-color);
   mix-blend-mode: difference;
   @media (width >= 768px) {
     inline-size: 21px;
     block-size: 21px;
   }
-}
-
-/* ховер-заливка кнопки Like и кнопки, которая открывает модальное окно */
-
-.card__like-button:after,
-.save-button::after {
-  inline-size: 100%;
-  block-size: 100%;
-  inset: 0;
-  background-color: var(--base-color);
-  position: absolute;
-  content: '';
-  transition: translate 0.5s ease-in-out;
-  translate: -100%;
-  z-index: 1;
-}
-
-.card__like-button:hover::after,
-.save-button:hover::after {
-  translate: 0%;
 }
 
 /* стилизация модального окна */
@@ -303,7 +297,7 @@ button:not(.card__icon-button):focus-visible {
   inset: 0;
   transition: opacity 0.3s ease-in-out;
   border: 2px solid var(--base-color);
-  padding: 30px 40px ;
+  padding: 30px 40px;
   row-gap: 30px;
   column-gap: 20px;
   min-inline-size: 341px;
@@ -338,7 +332,6 @@ button:not(.card__icon-button):focus-visible {
 }
 
 .save-dialog__close-button {
-  border: 2px solid var(--base-color);
   padding: 9px 17px;
   inline-size: 100%;
   grid-column: 1 / 3;
