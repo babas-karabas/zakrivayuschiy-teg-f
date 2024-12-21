@@ -33,9 +33,9 @@ a {
 button,
 input {
   color: currentColor;
-  font-family: var(--accent-font);
-  font-size: inherit;
-  background-color: transparent;
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  background-color: var(--contrast-color);
   border: 2px solid var(--base-color);
 
 }
