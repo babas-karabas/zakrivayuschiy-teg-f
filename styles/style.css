@@ -241,7 +241,7 @@ button:not(.card__icon-button):hover::after {
 
 .main-body {
   fill: none;
-  transition: fill 0.3s 0.05s linear;
+  transition: fill 0.3s linear;
 }
 
 .like-icon:active .core {

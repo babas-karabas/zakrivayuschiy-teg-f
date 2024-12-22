@@ -50,4 +50,5 @@
 
 .like-icon.is-liked .heart {
   animation: heart-scale 0.3s linear 0.1s;
+  transform-origin: center;
 }
