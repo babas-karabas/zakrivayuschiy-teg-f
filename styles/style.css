@@ -230,8 +230,8 @@ button:not(.card__icon-button):hover::after {
 }
 
 .core {
-  fill: none;
-  transition: fill 0.3s 0.03s linear;
+  fill: transparent;
+  transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon:hover .main-body {
@@ -240,7 +240,7 @@ button:not(.card__icon-button):hover::after {
 }
 
 .main-body {
-  fill: none;
+  fill: transparent;
   transition: fill 0.3s linear;
 }
 
